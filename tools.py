@@ -1,11 +1,12 @@
 """Useful tools for Project Euler problems.
 
--F1
--F2 etc
+Exports:
+    arithmetic_series_sum: calculate the sum of an arithmetic series.
 """
 
 def arithmetic_series_sum(first_term: int, last_term: int, n: int) -> int:
     """Find the sum of an arithmetic series.
+    
     Args:
         first_term: The first term in the arithmetic serires to be summed.
         last_term: The final term in the series.
