@@ -5,6 +5,7 @@ Problem statement:
 URL
 """
 
+
 import argparse
 from datetime import datetime
 # from tools import something
@@ -22,9 +23,9 @@ if __name__ == "__main__":
     parser.add_argument("limit", help="limit, default to 10", default=10,
                     type=int, nargs='?')
     args = parser.parse_args()
-    start = datetime.now()
+    clock_start = datetime.now()
     answer = solution(args.limit)
-    end = datetime.now()
+    clock_end = datetime.now()
     print("The answer is {} for input {}.".format(answer, args.limit))
-    print("Execution time was {}.".format(end - start))
+    print("Execution time was {}.".format(clock_end - clock_start))
     

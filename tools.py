@@ -27,7 +27,7 @@ def prime_factors(n: int):
 
 
 def prime_sieve(limit: int):
-    # """Generate primes below limit with the Sieve of Eratosthenes."""
+    """Generate primes below limit with the Sieve of Eratosthenes."""
     primes = [True] * limit
     i = 2
     while(i < limit):
@@ -35,4 +35,5 @@ def prime_sieve(limit: int):
             for j in range(2 * i, limit, i):
                 primes[j] = False
         i += 1
+    
     return [i for i, val in list(enumerate(primes))[2:] if val]
