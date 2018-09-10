@@ -23,7 +23,7 @@ if __name__ == "__main__":
                     type=int, nargs='?')
     args = parser.parse_args()
     start = datetime.now()
-    print(solution(args.limit))
+    answer = constant_time(args.limit)
     end = datetime.now()
-    print("Execution time: {}".format(end - start))
-    
+    print("The answer is {} for input {}.".format(answer, args.limit))
+    print("Execution time was {}.".format(end - start))
