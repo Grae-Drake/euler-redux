@@ -2,6 +2,7 @@
 
 Exports:
     arithmetic_series_sum: Calculate the sum of an arithmetic series.
+    nth_prime: Calculate the nth prime number.
     prime_factor_counts: Decompose a number into all its prime factors.
     prime_sieve: Sieve of Erasthones to generate prime numbers.
     unique_prime_factors: List of unique prime factors.
@@ -19,9 +20,35 @@ def arithmetic_series_sum(first_term: int, last_term: int, n: int) -> int:
 
     Returns:
         The sum of the terms in the arithmetic series.
+
     """
 
     return int(n * (first_term + last_term) / 2)
+
+
+def nth_prime(n: int) -> int:
+    """Find the nth prime number.
+
+    Args:
+        n: the index of the prime number you'd like to find.
+    
+    Returns:
+        the nth prime number.
+
+    This solution relies on the prime number theorem, which says that the
+    nth prime number is close to n * ln(n). First we efficiently generate a
+    list of primes less than n * ln(n) (plus a small buffer to account) with
+    a sieve of erasthones, then efficiently look up the nth term in that list.
+    
+    The buffer, which shrinks as the input increases, accounts for the
+    shrinking error of the prime number theorem. This error could be modeled
+    more closely for a small efficiency gain.
+    
+    """
+
+    buffer = 3 if n < 6 else 1.5 if n < 100 else 1.2
+    primes = prime_sieve(math.ceil(n * math.log(n) * buffer))
+    return 2 if n == 1 else primes[n - 1]
 
 
 def prime_factor_counts(n: int):
