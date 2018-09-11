@@ -1,7 +1,12 @@
 """Useful tools for Project Euler problems.
 
 Exports:
-    arithmetic_series_sum: calculate the sum of an arithmetic series.
+    arithmetic_series_sum: Calculate the sum of an arithmetic series.
+    prime_factor_counts: Decompose a number into all its prime factors.
+    prime_sieve: Sieve of Erasthones to generate prime numbers.
+    unique_prime_factors: List of unique prime factors.
+
+
 """
 
 def arithmetic_series_sum(first_term: int, last_term: int, n: int) -> int:
@@ -19,11 +24,18 @@ def arithmetic_series_sum(first_term: int, last_term: int, n: int) -> int:
     return int(n * (first_term + last_term) / 2)
 
 
-def prime_factors(n: int):
-    """Return a sorted list of unique prime factors of n."""
-
-    candidate_primes = prime_sieve(int(n ** 0.5))
-    return [prime for prime in candidate_primes if n % prime == 0]
+def prime_factor_counts(n: int):
+    """Returns a dict with counts of all prime factors of n."""
+    unique_factors = unique_prime_factors(n)
+    result = {}
+    for factor in unique_factors:
+        factor_count = 1
+        remainder = n / factor
+        while ((remainder / factor) % 1 == 0):
+            factor_count += 1
+            remainder = remainder / factor
+        result[factor] = factor_count
+    return result
 
 
 def prime_sieve(limit: int):
@@ -37,3 +49,10 @@ def prime_sieve(limit: int):
         i += 1
     
     return [i for i, val in list(enumerate(primes))[2:] if val]
+
+
+def unique_prime_factors(n: int):
+    """Return a sorted list of unique prime factors of n."""
+
+    candidate_primes = prime_sieve(n)
+    return [prime for prime in candidate_primes if n % prime == 0]

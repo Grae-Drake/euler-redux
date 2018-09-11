@@ -9,12 +9,16 @@ https://projecteuler.net/problem=3
 
 import argparse
 from datetime import datetime
-from tools import prime_factors
+from tools import prime_sieve
 
 
 def solution(limit: int) -> int:
-    """Factor into primes and return the largest"""
-    return prime_factors(limit)[-1]
+    """Search candidate primes for the largest prime factor."""
+    candidate_primes = prime_sieve(int(limit ** 0.5))
+    for prime in reversed(candidate_primes):
+        if (limit / prime) % 1 == 0:
+            return prime
+    return -1
 
 
 if __name__ == "__main__":
