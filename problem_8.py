@@ -1,4 +1,4 @@
-"""Solve Project Euler Problem XXXX.
+"""Solve Project Euler Problem 8.
 
 Problem statement: The four adjacent digits in the 1000-digit number in
 data/problem8.txt that have the greatest product are 9 × 9 × 8 × 9 = 5832.
