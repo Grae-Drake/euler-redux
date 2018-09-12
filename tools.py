@@ -10,6 +10,10 @@ Exports:
 
 """
 
+
+import math
+
+
 def arithmetic_series_sum(first_term: int, last_term: int, n: int) -> int:
     """Find the sum of an arithmetic series.
     
@@ -76,6 +80,14 @@ def prime_sieve(limit: int):
         i += 1
     
     return [i for i, val in list(enumerate(primes))[2:] if val]
+
+
+def product(lst):
+    """Generate the product of all terms in lst"""
+    result = 1
+    for n in lst:
+        result *= n
+    return result
 
 
 def unique_prime_factors(n: int):
