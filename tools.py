@@ -12,6 +12,7 @@ Exports:
 
 
 import math
+from typing import List, Dict
 
 
 def arithmetic_series_sum(first_term: int, last_term: int, n: int) -> int:
@@ -28,6 +29,16 @@ def arithmetic_series_sum(first_term: int, last_term: int, n: int) -> int:
     """
 
     return int(n * (first_term + last_term) / 2)
+
+
+def factors(n: int) -> List[int]:
+    """Return a sorted list of unique factors of n, including 1 and n."""
+    result = {1: True, n: True}
+    for x in range(2, int(n ** .5)):
+        if (n / x) % 1 == 0:
+            result[x] = True
+            result[int(n / x)] = True
+    return sorted(result.keys())
 
 
 def nth_prime(n: int) -> int:
@@ -55,7 +66,7 @@ def nth_prime(n: int) -> int:
     return 2 if n == 1 else primes[n - 1]
 
 
-def prime_factor_counts(n: int):
+def prime_factor_counts(n: int) -> Dict[int, int]:
     """Returns a dict with counts of all prime factors of n."""
     unique_factors = unique_prime_factors(n)
     result = {}
@@ -69,7 +80,7 @@ def prime_factor_counts(n: int):
     return result
 
 
-def prime_sieve(limit: int):
+def prime_sieve(limit: int) -> List[int]:
     """Generate primes below limit with the Sieve of Eratosthenes."""
     primes = [True] * limit
     i = 2
@@ -82,15 +93,15 @@ def prime_sieve(limit: int):
     return [i for i, val in list(enumerate(primes))[2:] if val]
 
 
-def product(lst):
-    """Generate the product of all terms in lst"""
+def product(lst: int) -> int:
+    """Generate the product of all terms in a list."""
     result = 1
     for n in lst:
         result *= n
     return result
 
 
-def unique_prime_factors(n: int):
+def unique_prime_factors(n: int) -> List[int]:
     """Return a sorted list of unique prime factors of n."""
 
     candidate_primes = prime_sieve(n)
