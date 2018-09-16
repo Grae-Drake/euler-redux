@@ -31,6 +31,14 @@ def arithmetic_series_sum(first_term: int, last_term: int, n: int) -> int:
     return int(n * (first_term + last_term) / 2)
 
 
+def choose(n: int, k: int) -> int:
+    """Efficiently calculate number of n choose k combinations."""
+    result = 1
+    for x in range(1, k + 1):
+        result *= (n + 1 - x) / x
+    return int(result)
+
+
 def factors(n: int) -> List[int]:
     """Return a sorted list of unique factors of n, including 1 and n."""
     result = {1: True, n: True}
