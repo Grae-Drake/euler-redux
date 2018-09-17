@@ -2,9 +2,13 @@
 
 Exports:
     arithmetic_series_sum: Calculate the sum of an arithmetic series.
+    choose: Efficiently calculate number of n choose k combinations.
+    factors: Return a sorted list of unique factors of n, including 1 and n.
     nth_prime: Calculate the nth prime number.
     prime_factor_counts: Decompose a number into all its prime factors.
     prime_sieve: Sieve of Erasthones to generate prime numbers.
+    product: Generate the product of all terms in a list.
+    proper_divisors: Generate all proper divisors of n.
     unique_prime_factors: List of unique prime factors.
 
 
@@ -107,6 +111,15 @@ def product(lst: int) -> int:
     for n in lst:
         result *= n
     return result
+
+
+def proper_divisors(n: int) -> List[int]:
+    """Generate all proper divisors of n."""
+    divisors = set([1])
+    for x in range(2, int(n ** 0.5) + 1):
+        if (n / x) % 1 == 0:
+            divisors = divisors.union(set([x, int(n / x)]))
+    return sorted(list(divisors))
 
 
 def unique_prime_factors(n: int) -> List[int]:
