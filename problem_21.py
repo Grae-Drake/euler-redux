@@ -16,7 +16,7 @@ The proper divisors of 284 are:
 
 Evaluate the sum of all the amicable numbers under 10000.
 
-URL
+https://projecteuler.net/problem=21
 
 """
 
